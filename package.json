@@ -1,0 +1,36 @@
+{
+  "name": "prod-logger",
+  "version": "1.0.0",
+  "description": "prod-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose and debug statements",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thisisshivanshpatel/prod-logger.git"
+  },
+  "keywords": [
+    "prod-logger",
+    "winston",
+    "logger",
+    "logging",
+    "logs",
+    "sysadmin",
+    "bunyan",
+    "pino",
+    "loglevel",
+    "tools",
+    "json",
+    "stream"
+  ],
+  "author": "shivansh patel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thisisshivanshpatel/prod-logger/issues"
+  },
+  "homepage": "https://github.com/thisisshivanshpatel/prod-logger#readme",
+  "devDependencies": {
+    "colors": "^1.4.0"
+  }
+}
