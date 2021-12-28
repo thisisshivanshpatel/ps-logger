@@ -1,14 +1,14 @@
 {
-  "name": "prod-logger",
+  "name": "ps-logger",
   "version": "1.0.0",
-  "description": "prod-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose and debug statements",
+  "description": "ps-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose and debug statements",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thisisshivanshpatel/prod-logger.git"
+    "url": "git+https://github.com/thisisshivanshpatel/ps-logger.git"
   },
   "keywords": [
     "prod-logger",
@@ -27,9 +27,9 @@
   "author": "shivansh patel <shivanshpatel.1999@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thisisshivanshpatel/prod-logger/issues"
+    "url": "https://github.com/thisisshivanshpatel/ps-logger/issues"
   },
-  "homepage": "https://github.com/thisisshivanshpatel/prod-logger#readme",
+  "homepage": "https://github.com/thisisshivanshpatel/ps-logger#readme",
   "devDependencies": {
     "colors": "^1.4.0"
   }

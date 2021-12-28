@@ -1,13 +1,13 @@
-# prod-logger
+# ps-logger
 
 <img src="screenshots/prod-logger.PNG" alt="screenshot" height="200" width="600"/>
 
-- prod-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose,prompt and debug statements
+- ps-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose,prompt and debug statements
 
 #### usage examples:-
 
 ```JAVASCRIPT
-const logger=require('prod-logger');
+const logger=require('ps-logger');
 
 logger.info("This is info")
 logger.warn("This is warning");
