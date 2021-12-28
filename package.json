@@ -24,7 +24,7 @@
     "json",
     "stream"
   ],
-  "author": "shivansh patel",
+  "author": "shivansh patel <shivanshpatel.1999@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/thisisshivanshpatel/prod-logger/issues"
