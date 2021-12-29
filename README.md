@@ -1,6 +1,6 @@
 # ps-logger
 
-<img src="screenshots/prod-logger.PNG" alt="screenshot" height="200" width="600"/>
+<img src="screenshots/ps-logger.PNG" alt="screenshot" height="200" width="600"/>
 
 - ps-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose,prompt and debug statements
 

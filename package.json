@@ -1,6 +1,6 @@
 {
   "name": "ps-logger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ps-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose and debug statements",
   "main": "index.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "url": "https://github.com/thisisshivanshpatel/ps-logger/issues"
   },
   "homepage": "https://github.com/thisisshivanshpatel/ps-logger#readme",
-  "devDependencies": {
+  "dependencies": {
     "colors": "^1.4.0"
   }
 }

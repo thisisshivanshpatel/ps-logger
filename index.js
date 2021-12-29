@@ -17,34 +17,39 @@ colors.setTheme({
     error: 'red'
   });
 
+//setting time in (HH:MM:SS)
+const date=new Date();
+const hours=date.getHours();
+const minute=date.getMinutes();
+const second=date.getSeconds();
 
 
 const info=(arg)=>{
-  log(colors.bold.green('[info]:')+`${arg}`.info);
+  log(colors.bold.green('[info]:')+colors.bold.gray(` ${hours}:${minute}:${second} `)+`${arg}`.info);
 }
 
 const warn=(arg)=>{
-  log(colors.bold.yellow('[warn]:')+`${arg}`.warn);
+  log(colors.bold.yellow('[warn]:')+colors.bold.gray(` ${hours}:${minute}:${second} `)+`${arg}`.warn);
 }
 
 const error=(arg)=>{
-    log(colors.bold.red('[error]:')+`${arg}`.error);
+  log(colors.bold.red('[error]:')+colors.bold.gray(` ${hours}:${minute}:${second} `)+`${arg}`.error);
 }
 
 const debug=(arg)=>{
-    log(colors.bold.blue('[debug]:')+`${arg}`.debug);
+  log(colors.bold.blue('[debug]:')+colors.bold.gray(` ${hours}:${minute}:${second} `)+`${arg}`.debug);
 }
 
 const silly=(arg)=>{
-    log(colors.rainbow('[silly]:')+`${arg}`.silly);
+  log(colors.rainbow('[silly]:')+colors.bold.gray(` ${hours}:${minute}:${second} `)+`${arg}`.silly);
 }
 
 const verbose=(arg)=>{
-    log(colors.bold.cyan('[verbose]:')+`${arg}`.verbose);
+  log(colors.bold.cyan('[verbose]:')+colors.bold.gray(` ${hours}:${minute}:${second} `)+`${arg}`.verbose);
 }
 
 const prompt=(arg)=>{
-    log(colors.bold.grey('[prompt]:')+`${arg}`.prompt);
+    log(colors.bold.grey('[prompt]:')+colors.bold.gray(` ${hours}:${minute}:${second} `)+`${arg}`.prompt);
 }
 
 module.exports={info,warn,error,debug,silly,verbose,prompt,setColor}
