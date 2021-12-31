@@ -2,7 +2,7 @@
  * @name ps-logger
  * @namespace ps-logger
  * @description ps-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose and debug statements
- * @version 1.0.1
+ * @version 1.0.3
  * @author shivansh patel <shivanshpatel.1999@gmail.com>
  * @license MIT
  * @example info('Hello World!');

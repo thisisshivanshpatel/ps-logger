@@ -1,5 +1,5 @@
 const colors = require("colors");
-const log = (args) => process.stdout.write(args)
+const log = (args) => process.stdout.write(args+'\n')
 
 //enabling and disabling color
 /**
