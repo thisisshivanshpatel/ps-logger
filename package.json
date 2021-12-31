@@ -25,12 +25,19 @@
     "stream"
   ],
   "author": "shivansh patel <shivanshpatel.1999@gmail.com>",
+  "contributors": [
+    "Minecodes <minecodes@minecodes.de>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/thisisshivanshpatel/ps-logger/issues"
   },
   "homepage": "https://github.com/thisisshivanshpatel/ps-logger#readme",
   "dependencies": {
+    "@types/colors": "^1.2.1",
     "colors": "^1.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4"
   }
 }
