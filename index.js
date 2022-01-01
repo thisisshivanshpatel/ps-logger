@@ -77,11 +77,6 @@ const prompt = (arg) => {
     log(colors.bold.grey('[prompt]:') + colors.bold.gray(getDate()) + ` ${arg}`.prompt);
 }
 
-info('seven1')
-setTimeout(() => {
-    info('seven2')
-}, 1000);
-
 module.exports = {
     info,
     warn,
