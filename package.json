@@ -1,6 +1,6 @@
 {
   "name": "ps-logger",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ps-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose and debug statements",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,8 @@
   ],
   "author": "shivansh patel <shivanshpatel.1999@gmail.com>",
   "contributors": [
-    "Minecodes <minecodes@minecodes.de>"
+    "Minecodes <minecodes@minecodes.de>",
+    "guoyaqi <15902999528@163.com>"
   ],
   "license": "MIT",
   "bugs": {
