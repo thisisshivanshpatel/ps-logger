@@ -1,89 +1,169 @@
 const colors = require("colors");
-const log = (args) => process.stdout.write(args + '\n');
+const log = (args) => process.stdout.write(args + "\n");
 
 //enabling and disabling color
 /**
- * @param {Boolean} color 
+ * @param {Boolean} color
  */
-const setColor = (color = true) => color ? colors.enable() : colors.disable();
+const setColor = (color = true) => (color ? colors.enable() : colors.disable());
 
 //setting theme
 colors.setTheme({
-    silly: 'rainbow',
-    verbose: 'cyan',
-    prompt: 'grey',
-    info: 'green',
-    warn: 'yellow',
-    debug: 'blue',
-    error: 'red'
+  silly: "rainbow",
+  verbose: "cyan",
+  prompt: "grey",
+  info: "green",
+  warn: "yellow",
+  debug: "blue",
+  error: "red",
 });
 
 const getDate = () => {
-    //setting time in (HH:MM:SS)
-    const date = new Date();
-    const hours = date.getHours();
-    const minute = date.getMinutes();
-    const second = date.getSeconds();
+  //setting time in (HH:MM:SS)
+  const date = new Date();
+  const hours = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
 
-    return `${hours}:${minute}:${second}`;
+  return `${hours}:${minute}:${second}`;
+};
+
+//argument checker
+const argChecker = (arg) => {
+  if (typeof arg === "object") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+//object logger
+const logObject = (color, type, arg) => {
+  const print = console.log;
+  print(
+    colors.bold[color](`[${type}]:`) +
+      colors.bold.gray(getDate()) +
+      colors[color](arg)
+  );
 };
 
 /**
- * @param {String} arg 
+ * @param {any} arg
  */
 const info = (arg) => {
-    log(colors.bold.green('[info]:') + colors.bold.gray(getDate()) + ` ${arg}`.info);
-}
+  const isObject = argChecker(arg);
+  if (isObject) {
+    logObject("green", "info", arg);
+  } else {
+    log(
+      colors.bold.green("[info]:") +
+        colors.bold.gray(getDate()) +
+        ` ${arg}`.info
+    );
+  }
+};
 
 /**
- * @param {String} arg 
+ * @param {any} arg
  */
 const warn = (arg) => {
-    log(colors.bold.yellow('[warn]:') + colors.bold.gray(getDate()) + ` ${arg}`.warn);
-}
+  const isObject = argChecker(arg);
+  if (isObject) {
+    logObject("yellow", "warn", arg);
+  } else {
+    log(
+      colors.bold.yellow("[warn]:") +
+        colors.bold.gray(getDate()) +
+        ` ${arg}`.warn
+    );
+  }
+};
 
 /**
- * @param {String} arg 
+ * @param {any} arg
  */
 const error = (arg) => {
-    log(colors.bold.red('[error]:') + colors.bold.gray(getDate()) + ` ${arg}`.error);
-}
+  const isObject = argChecker(arg);
+  if (isObject) {
+    logObject("red", "error", arg);
+  } else {
+    log(
+      colors.bold.red("[error]:") +
+        colors.bold.gray(getDate()) +
+        ` ${arg}`.error
+    );
+  }
+};
 
 /**
- * @param {String} arg 
+ * @param {any} arg
  */
 const debug = (arg) => {
-    log(colors.bold.blue('[debug]:') + colors.bold.gray(getDate()) + ` ${arg}`.debug);
-}
+  const isObject = argChecker(arg);
+  if (isObject) {
+    logObject("blue", "debug", arg);
+  } else {
+    log(
+      colors.bold.blue("[debug]:") +
+        colors.bold.gray(getDate()) +
+        ` ${arg}`.debug
+    );
+  }
+};
 
 /**
- * @param {String} arg 
+ * @param {any} arg
  */
 const silly = (arg) => {
-    log(colors.rainbow('[silly]:') + colors.bold.gray(getDate()) + ` ${arg}`.silly);
-}
+  const isObject = argChecker(arg);
+  if (isObject) {
+    logObject("white", "silly", arg);
+  } else {
+    log(
+      colors.rainbow("[silly]:") + colors.bold.gray(getDate()) + ` ${arg}`.silly
+    );
+  }
+};
 
 /**
- * @param {String} arg 
+ * @param {any} arg
  */
 const verbose = (arg) => {
-    log(colors.bold.cyan('[verbose]:') + colors.bold.gray(getDate()) + ` ${arg}`.verbose);
-}
+  const isObject = argChecker(arg);
+  if (isObject) {
+    logObject("cyan", "verbose", arg);
+  } else {
+    log(
+      colors.bold.cyan("[verbose]:") +
+        colors.bold.gray(getDate()) +
+        ` ${arg}`.verbose
+    );
+  }
+};
 
 /**
- * @param {String} arg 
+ * @param {any} arg
  */
 const prompt = (arg) => {
-    log(colors.bold.grey('[prompt]:') + colors.bold.gray(getDate()) + ` ${arg}`.prompt);
-}
+  const isObject = argChecker(arg);
+  if (isObject) {
+    logObject("grey", "prompt", arg);
+  } else {
+    log(
+      colors.bold.grey("[prompt]:") +
+        colors.bold.gray(getDate()) +
+        ` ${arg}`.prompt
+    );
+  }
+};
 
 module.exports = {
-    info,
-    warn,
-    error,
-    debug,
-    silly,
-    verbose,
-    prompt,
-    setColor
-}
+  info,
+  warn,
+  error,
+  debug,
+  silly,
+  verbose,
+  prompt,
+  setColor,
+};

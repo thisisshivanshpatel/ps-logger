@@ -3,6 +3,8 @@
 <img src="screenshots/ps-logger.PNG" alt="screenshot" height="200" width="600"/>
 
 - [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://choosealicense.com/licenses/mit/)
+ [![Npm package total downloads](https://badgen.net/npm/dt/ps-logger)](https://npmjs.com/package/ps-logger)
+
 - <a href="https://dev.to/imshivanshpatel" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/devto.svg" alt="imshivanshpatel" height="30" width="40" /></a>
 <a href="https://linkedin.com/in/shivansh-patel-4915b4171" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="shivansh-patel-4915b4171" height="30" width="40" /></a>
 <a href="https://instagram.com/programming_updates" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="programming_updates" height="30" width="40" /></a>
