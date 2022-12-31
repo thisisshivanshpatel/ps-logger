@@ -1,9 +1,10 @@
 const colors = require("colors");
 const log = (args) => process.stdout.write(args + "\n");
 
-//enabling and disabling color
 /**
- * @param {Boolean} color
+ * `setColor` method is used for setting colors
+ *
+ * @param {boolean} color - it accepts a boolean value
  */
 const setColor = (color = true) => (color ? colors.enable() : colors.disable());
 
@@ -29,6 +30,8 @@ const getDate = () => {
 };
 
 /**
+ * used for logging info messages
+ *
  * @param {any} arg
  */
 const info = (arg) => {
@@ -38,6 +41,8 @@ const info = (arg) => {
 };
 
 /**
+ * used for logging warn messages
+ *
  * @param {any} arg
  */
 const warn = (arg) => {
@@ -47,6 +52,8 @@ const warn = (arg) => {
 };
 
 /**
+ * used for logging error messages
+ *
  * @param {any} arg
  */
 const error = (arg) => {
@@ -56,6 +63,8 @@ const error = (arg) => {
 };
 
 /**
+ * used for logging debug messages
+ *
  * @param {any} arg
  */
 const debug = (arg) => {
@@ -65,6 +74,8 @@ const debug = (arg) => {
 };
 
 /**
+ * used for logging silly messages
+ *
  * @param {any} arg
  */
 const silly = (arg) => {
@@ -74,6 +85,8 @@ const silly = (arg) => {
 };
 
 /**
+ * used for logging verbose messages
+ *
  * @param {any} arg
  */
 const verbose = (arg) => {
@@ -85,6 +98,8 @@ const verbose = (arg) => {
 };
 
 /**
+ * used for logging prompt messages
+ *
  * @param {any} arg
  */
 const prompt = (arg) => {
