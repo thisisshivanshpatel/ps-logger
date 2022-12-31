@@ -2,7 +2,6 @@
 
 <img src="screenshots/ps-logger.PNG" alt="screenshot" height="200" width="600"/>
 
-- [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://choosealicense.com/licenses/mit/)
  
 - [![Npm package total downloads](https://badgen.net/npm/dt/ps-logger)](https://npmjs.com/package/ps-logger)
 
@@ -10,6 +9,9 @@
 <a href="https://linkedin.com/in/shivansh-patel-4915b4171" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="shivansh-patel-4915b4171" height="30" width="40" /></a>
 <a href="https://instagram.com/programming_updates" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="programming_updates" height="30" width="40" /></a>
 - ps-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose,prompt and debug statements
+
+
+## **`File logger`** added in this release (1.0.7)
 
 #### usage examples:-
 
@@ -40,4 +42,15 @@ logger.setColor(false);
 import {info} from "ps-logger";
 
 info(`server is running on port ${port} `)
+```
+
+#### File Logging
+```javascript
+const { logToFile } = require("ps-logger");
+
+// set it to `true` to log into the file
+logToFile(true);
+
+
+info("This will output into log file")
 ```

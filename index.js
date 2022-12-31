@@ -1,5 +1,36 @@
 const colors = require("colors");
-const log = (args) => process.stdout.write(args + "\n");
+const fs = require("fs");
+
+/** flag for allowing to log in a file */
+let fileLog = false;
+
+/** Create a writable stream to the log file */
+const logStream = fs.createWriteStream("./ps-logger.log", { flags: "a" });
+
+/** core method to log in console and file */
+const log = (args) => {
+  process.stdout.write(args + "\n");
+
+  if (fileLog) {
+    logStream.write(args + "\n");
+  }
+};
+
+/**
+ *  used for logging your terminal output in `ps-logger.log` file
+ *
+ *  use this method only once it will work globally to output all your logs in log file
+ *
+ * @default - false
+ * @param {boolean} fileLogging - it accepts a boolean value
+ *
+ */
+const logToFile = (fileLogging = false) => {
+  if (fileLogging) {
+    fileLog = true;
+    setColor(false);
+  }
+};
 
 /**
  * `setColor` method is used for setting colors
@@ -110,6 +141,9 @@ const prompt = (arg) => {
   );
 };
 
+// Close the log stream when you are done
+// logStream.end();
+
 module.exports = {
   info,
   warn,
@@ -119,4 +153,5 @@ module.exports = {
   verbose,
   prompt,
   setColor,
+  logToFile,
 };
