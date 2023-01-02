@@ -46,10 +46,13 @@ info(`server is running on port ${port} `)
 
 #### File Logging
 ```javascript
-const { logToFile } = require("ps-logger");
+const { logToFile,info } = require("ps-logger");
 
 // set it to `true` to log into the file
-logToFile(true);
+
+// second param is file name and it's optional if you don't pass file name then it will log into ps-logger.log file
+
+logToFile(true,'todaysLog');
 
 
 info("This will output into log file")

@@ -2,7 +2,7 @@
  * @name ps-logger
  * @namespace ps-logger
  * @description ps-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose and debug statements
- * @version 1.0.7
+ * @version 1.0.8
  * @author shivansh patel <shivanshpatel.1999@gmail.com>
  * @license MIT
  * @example info('Hello World!');
@@ -48,12 +48,13 @@ export function setColor(color: boolean): void;
  *
  *  use this method only once it will work globally to output all your logs in log file
  *
- *  if `logToFile` is set to `true` then all the logs appear without `colors` in console
- *
- * @default false
  * @param {boolean} fileLogging - it accepts a boolean value
+ * @default - false
+ *
+ * @param {string} fileName - it accepts a string value for file name,don't add extensions
+ * @default - "ps-logger.log"
  */
-export function logToFile(fileLogging: boolean): void;
+export function logToFile(fileLogging: boolean, fileName: string): void;
 
 /**
  * used for logging silly messages

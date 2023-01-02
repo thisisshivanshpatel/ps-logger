@@ -1,37 +1,6 @@
 const colors = require("colors");
 const fs = require("fs");
 
-/** flag for allowing to log in a file */
-let fileLog = false;
-
-/** Create a writable stream to the log file */
-const logStream = fs.createWriteStream("./ps-logger.log", { flags: "a" });
-
-/** core method to log in console and file */
-const log = (args) => {
-  process.stdout.write(args + "\n");
-
-  if (fileLog) {
-    logStream.write(args + "\n");
-  }
-};
-
-/**
- *  used for logging your terminal output in `ps-logger.log` file
- *
- *  use this method only once it will work globally to output all your logs in log file
- *
- * @default - false
- * @param {boolean} fileLogging - it accepts a boolean value
- *
- */
-const logToFile = (fileLogging = false) => {
-  if (fileLogging) {
-    fileLog = true;
-    setColor(false);
-  }
-};
-
 /**
  * `setColor` method is used for setting colors
  *
@@ -49,6 +18,42 @@ colors.setTheme({
   debug: "blue",
   error: "red",
 });
+
+/** flag for allowing to log in a file */
+let fileLog = false;
+
+let logStream;
+
+/**
+ *  used for logging your terminal output in `ps-logger.log` file
+ *
+ *  use this method only once it will work globally to output all your logs in log file
+ *
+ * @param {boolean} fileLogging - it accepts a boolean value
+ *
+ * @param {string} fileName - it accepts a string value for file name,don't add extensions
+ *
+ * @default - false
+ *
+ */
+const logToFile = (fileLogging = false, fileName = "ps-logger") => {
+  if (fileLogging) {
+    // Create a writable stream to the log file
+    logStream = fs.createWriteStream(`./${fileName}.log`, { flags: "a" });
+
+    fileLog = true;
+    setColor(false);
+  }
+};
+
+/** core method to log in console and file */
+const log = (args) => {
+  process.stdout.write(args + "\n");
+
+  if (fileLog) {
+    logStream.write(args + "\n");
+  }
+};
 
 const getDate = () => {
   //setting time in (HH:MM:SS)
