@@ -11,7 +11,7 @@
 - ps-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose,prompt and debug statements
 
 
-## **`File logger`** added in this release (1.0.7)
+## **`File logger`** added
 
 #### usage examples:-
 

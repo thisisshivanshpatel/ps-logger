@@ -34,9 +34,6 @@
     "url": "https://github.com/thisisshivanshpatel/ps-logger/issues"
   },
   "homepage": "https://github.com/thisisshivanshpatel/ps-logger#readme",
-  "dependencies": {
-    "colors": "^1.4.0"
-  },
   "devDependencies": {
     "typescript": "^4.5.4"
   }

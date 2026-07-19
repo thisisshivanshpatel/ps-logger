@@ -1,28 +1,69 @@
-const colors = require("colors");
 const fs = require("fs");
+
+let colorToggle = true;
 
 /**
  * `setColor` method is used for setting colors
  *
  * @param {boolean} color - it accepts a boolean value
  */
-const setColor = (color = true) => (color ? colors.enable() : colors.disable());
+const setColor = (color = true) =>
+  color ? (colorToggle = true) : (colorToggle = false);
 
-//setting theme
-colors.setTheme({
-  silly: "rainbow",
-  verbose: "cyan",
-  prompt: "grey",
-  info: "green",
-  warn: "yellow",
-  debug: "blue",
-  error: "red",
-});
+//colors
+const colors = {
+  reset: "\x1b[0m",
+  bright: "\x1b[1m",
+  dim: "\x1b[2m",
+  underscore: "\x1b[4m",
+  blink: "\x1b[5m",
+  reverse: "\x1b[7m",
+  hidden: "\x1b[8m",
+
+  fgBlack: "\x1b[30m",
+  fgRed: "\x1b[31m",
+  fgGreen: "\x1b[32m",
+  fgYellow: "\x1b[33m",
+  fgBlue: "\x1b[34m",
+  fgMagenta: "\x1b[35m",
+  fgCyan: "\x1b[36m",
+  fgWhite: "\x1b[37m",
+  fgGray: "\x1b[90m", // Bright Black/Gray
+
+  bgBlack: "\x1b[40m",
+  bgRed: "\x1b[41m",
+  bgGreen: "\x1b[42m",
+  bgYellow: "\x1b[43m",
+  bgBlue: "\x1b[44m",
+  bgMagenta: "\x1b[45m",
+  bgCyan: "\x1b[46m",
+  bgWhite: "\x1b[47m",
+  bgGray: "\x1b[100m", // Bright Black Background/Gray Background
+};
+
+// rainbow colors
+const rainbowColors = [
+  "\x1b[31m", // Red
+  "\x1b[33m", // Yellow (Closest to Orange)
+  "\x1b[93m", // Bright Yellow
+  "\x1b[32m", // Green
+  "\x1b[34m", // Blue
+  "\x1b[35m", // Magenta (Indigo/Violet)
+  "\x1b[36m", // Cyan
+];
 
 /** flag for allowing to log in a file */
 let fileLog = false;
 
 let logStream;
+
+/**
+ * Remove ANSI escape sequences from strings when colors are disabled.
+ *
+ * @param {any} value
+ * @returns {string}
+ */
+const stripAnsi = (value) => String(value).replace(/\u001b\[[0-9;]*m/g, "");
 
 /**
  *  used for logging your terminal output in `ps-logger.log` file
@@ -48,21 +89,23 @@ const logToFile = (fileLogging = false, fileName = "ps-logger") => {
 
 /** core method to log in console and file */
 const log = (args) => {
-  process.stdout.write(args + "\n");
+  const message = colorToggle ? args : stripAnsi(args);
+
+  process.stdout.write(message + "\n");
 
   if (fileLog) {
-    logStream.write(args + "\n");
+    logStream.write(message + "\n");
   }
 };
 
+/** setting time in (HH:MM:SS) */
 const getDate = () => {
-  //setting time in (HH:MM:SS)
   const date = new Date();
   const hours = date.getHours();
   const minute = date.getMinutes();
   const second = date.getSeconds();
 
-  return `${hours}:${minute}:${second}`;
+  return `${colors.reset}${colors.fgGray}${colors.bright}${hours}:${minute}:${second} `;
 };
 
 /**
@@ -72,7 +115,9 @@ const getDate = () => {
  */
 const info = (arg) => {
   log(
-    colors.bold.green("[info]:") + colors.bold.gray(getDate()) + ` ${arg}`.info
+    `${colors.fgGreen}${colors.bright}[info]:` +
+      getDate() +
+      `${colors.reset}${colors.fgGreen}${arg}`,
   );
 };
 
@@ -83,7 +128,8 @@ const info = (arg) => {
  */
 const warn = (arg) => {
   log(
-    colors.bold.yellow("[warn]:") + colors.bold.gray(getDate()) + ` ${arg}`.warn
+    `${colors.fgYellow}${colors.bright}[warn]:${getDate()}` +
+      `${colors.reset}${colors.fgYellow}${arg}`,
   );
 };
 
@@ -94,7 +140,8 @@ const warn = (arg) => {
  */
 const error = (arg) => {
   log(
-    colors.bold.red("[error]:") + colors.bold.gray(getDate()) + ` ${arg}`.error
+    `${colors.fgRed}${colors.bright}[error]:${getDate()}` +
+      `${colors.reset}${colors.fgRed}${arg}`,
   );
 };
 
@@ -105,7 +152,8 @@ const error = (arg) => {
  */
 const debug = (arg) => {
   log(
-    colors.bold.blue("[debug]:") + colors.bold.gray(getDate()) + ` ${arg}`.debug
+    `${colors.fgBlue}${colors.bright}[debug]:${getDate()}` +
+      `${colors.reset}${colors.fgBlue}${arg}`,
   );
 };
 
@@ -114,11 +162,19 @@ const debug = (arg) => {
  *
  * @param {any} arg
  */
-const silly = (arg) => {
+function silly(text) {
+  let result = "";
+  for (let i = 0; i < text.length; i++) {
+    // Cycle through rainbowColors array based on index
+    const color = rainbowColors[i % rainbowColors.length];
+    result += `${color}${text[i]}`;
+  }
+  log(result + colors.reset);
   log(
-    colors.rainbow("[silly]:") + colors.bold.gray(getDate()) + ` ${arg}`.silly
+    `${colors.blink}${colors.bright}[silly]:${getDate()}` +
+      `${colors.reset}${result + colors.reset}`,
   );
-};
+}
 
 /**
  * used for logging verbose messages
@@ -127,9 +183,8 @@ const silly = (arg) => {
  */
 const verbose = (arg) => {
   log(
-    colors.bold.cyan("[verbose]:") +
-      colors.bold.gray(getDate()) +
-      ` ${arg}`.verbose
+    `${colors.fgCyan}${colors.bright}[verbose]:${getDate()}` +
+      `${colors.reset}${colors.fgCyan}${arg}`,
   );
 };
 
@@ -140,9 +195,20 @@ const verbose = (arg) => {
  */
 const prompt = (arg) => {
   log(
-    colors.bold.grey("[prompt]:") +
-      colors.bold.gray(getDate()) +
-      ` ${arg}`.prompt
+    `${colors.fgGray}${colors.bright}[prompt]:${getDate()}` +
+      `${colors.reset}${colors.fgGray}${arg}`,
+  );
+};
+
+/**
+ * used for logging magenta messages
+ *
+ * @param {any} arg
+ */
+const magenta = (arg) => {
+  log(
+    `${colors.fgMagenta}${colors.bright}[magenta]:${getDate()}` +
+      `${colors.reset}${colors.fgMagenta}${arg}`,
   );
 };
 
@@ -157,6 +223,7 @@ module.exports = {
   silly,
   verbose,
   prompt,
+  magenta,
   setColor,
   logToFile,
 };
