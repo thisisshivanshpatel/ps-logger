@@ -98,7 +98,7 @@ const logToFile = (fileLogging = false, fileName = "ps-logger") => {
 
 /** core method to log in console and file */
 const log = (args) => {
-  const message = colorToggle ? stripAnsi(args) : args;
+  const message = colorToggle ? args : stripAnsi(args);
   process.stdout.write(message + "\n");
 
   if (fileLog) {
