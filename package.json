@@ -1,6 +1,6 @@
 {
   "name": "ps-logger",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "ps-logger is a production grade logger, basically it is used for logging info,warning,error,silly,verbose and debug statements",
   "main": "index.js",
   "scripts": {

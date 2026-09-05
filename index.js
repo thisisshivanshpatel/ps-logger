@@ -1,6 +1,7 @@
 const fs = require("fs");
 
 let colorToggle = true;
+let interval;
 
 /**
  * `setColor` method is used for setting colors
@@ -41,7 +42,6 @@ const colors = {
   bgGray: "\x1b[100m", // Bright Black Background/Gray Background
 };
 
-// rainbow colors
 const rainbowColors = [
   "\x1b[31m", // Red
   "\x1b[33m", // Yellow (Closest to Orange)
@@ -51,6 +51,16 @@ const rainbowColors = [
   "\x1b[35m", // Magenta (Indigo/Violet)
   "\x1b[36m", // Cyan
 ];
+
+const colorsObj = {
+  red: rainbowColors[0],
+  yellow: rainbowColors[1],
+  brightYellow: rainbowColors[2],
+  green: rainbowColors[3],
+  blue: rainbowColors[4],
+  magenta: rainbowColors[5],
+  cyan: rainbowColors[6],
+};
 
 /** flag for allowing to log in a file */
 let fileLog = false;
@@ -83,17 +93,15 @@ const logToFile = (fileLogging = false, fileName = "ps-logger") => {
     logStream = fs.createWriteStream(`./${fileName}.log`, { flags: "a" });
 
     fileLog = true;
-    setColor(false);
   }
 };
 
 /** core method to log in console and file */
 const log = (args) => {
-  const message = colorToggle ? args : stripAnsi(args);
-
-  process.stdout.write(message + "\n");
+  process.stdout.write(args + "\n");
 
   if (fileLog) {
+    const message = stripAnsi(args);
     logStream.write(message + "\n");
   }
 };
@@ -169,9 +177,9 @@ function silly(text) {
     const color = rainbowColors[i % rainbowColors.length];
     result += `${color}${text[i]}`;
   }
-  log(result + colors.reset);
+  // log(result + colors.reset);
   log(
-    `${colors.blink}${colors.bright}[silly]:${getDate()}` +
+    `${colors.fgMagenta}${colors.bright}[silly]:${getDate()}` +
       `${colors.reset}${result + colors.reset}`,
   );
 }
@@ -203,7 +211,7 @@ const prompt = (arg) => {
 /**
  * used for logging magenta messages
  *
- * @param {any} arg
+ * @param {string} arg
  */
 const magenta = (arg) => {
   log(
@@ -212,8 +220,60 @@ const magenta = (arg) => {
   );
 };
 
+/**
+ * @typedef {typeof colorsObj} ColorsObj
+ */
+
+/**
+ * Scrolls text horizontally in the terminal.
+ *
+ * @param {string} arg
+ * @param {keyof ColorsObj} [textColor="green"]
+ * @returns {void}
+ */
+const scrollingText = (arg, textColor = "green") => {
+  const text = arg;
+  const terminalWidth = 80; // How wide you want the marquee display window to be
+  let step = 0;
+
+  const resolvedColor = colorsObj[textColor];
+
+  // ANSI codes
+  const CLEAR_LINE = "\x1b[2K";
+  const CURSOR_TO_START = "\x1b[0G";
+  const RESET = "\x1b[0m";
+
+  // Hide the cursor so it doesn't blink annoyingly while updating
+  process.stdout.write("\x1b[?25l");
+
+  interval = setInterval(() => {
+    // Generate the frame slice by looping the text string
+    let displayFrame = "";
+    for (let i = 0; i < terminalWidth; i++) {
+      displayFrame += text[(step + i) % text.length];
+    }
+
+    // 1. Clear the current line
+    // 2. Move cursor to column 0
+    // 3. Print the color, frame, and reset
+    process.stdout.write(
+      `${CLEAR_LINE}${CURSOR_TO_START}${resolvedColor}[ ${displayFrame} ]${RESET}`,
+    );
+
+    step++;
+  }, 100); // Updates every 100ms
+};
+
 // Close the log stream when you are done
 // logStream.end();
+
+// Gracefully show the cursor again if the user hits Ctrl+C to exit
+// this is for scrollingText method
+process.on("SIGINT", () => {
+  clearInterval(interval);
+  process.stdout.write("\x1b[?25h\n"); // Show cursor and move to next line
+  process.exit();
+});
 
 module.exports = {
   info,
@@ -226,4 +286,6 @@ module.exports = {
   magenta,
   setColor,
   logToFile,
+  colorsObj,
+  scrollingText,
 };

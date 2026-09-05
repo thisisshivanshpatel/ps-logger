@@ -13,28 +13,28 @@
  *
  * @param {any} arg
  */
-export function debug(arg: any);
+export function debug(arg: any): void;
 
 /**
  * used for logging error messages
  *
  * @param {any} arg
  */
-export function error(arg: any);
+export function error(arg: any): void;
 
 /**
  * used for logging info messages
  *
  * @param {any} arg
  */
-export function info(arg: any);
+export function info(arg: any): void;
 
 /**
  * used for logging prompt messages
  *
  * @param {any} arg
  */
-export function prompt(arg: any);
+export function prompt(arg: any): void;
 
 /**
  * `setColor` method is used for turning colors on and off
@@ -54,25 +54,48 @@ export function setColor(color: boolean): void;
  * @param {string} fileName - it accepts a string value for file name,don't add extensions
  * @default - "ps-logger.log"
  */
-export function logToFile(fileLogging: boolean, fileName: string): void;
+export function logToFile(fileLogging: boolean, fileName?: string): void;
 
 /**
  * used for logging silly messages
  *
  * @param {any} arg
  */
-export function silly(arg: any);
+export function silly(arg: any): void;
 
 /**
  * used for logging verbose messages
  *
  * @param {any} arg
  */
-export function verbose(arg: any);
+export function verbose(arg: any): void;
 
 /**
  * used for logging warn messages
  *
  * @param {any} arg
  */
-export function warn(arg: any);
+export function warn(arg: any): void;
+
+export const colorsObj: {
+  red: string;
+  yellow: string;
+  brightYellow: string;
+  green: string;
+  blue: string;
+  magenta: string;
+  cyan: string;
+};
+
+/**
+ * Scrolls text horizontally in the terminal.
+ *
+ * @param {string} arg
+ * @param {keyof typeof colorsObj} [textColor="green"]
+ */
+export function scrollingText(
+  arg: string,
+  textColor?: keyof typeof colorsObj,
+): void;
+
+export const magenta: (arg: any) => void;
