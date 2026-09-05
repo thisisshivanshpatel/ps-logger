@@ -15,11 +15,13 @@
 <table>
 	<tr>
 		<td width="50%">
+			<a href="https://chromewebstore.google.com/detail/Timez%20Timer%20%26%20Pomodoro/jpbjkgabibfagbhklibkeblgedgkbgei?utm_source=ext_app_menu"><img src="screenshots/clock128.png" alt="Timez Timer &amp; Pomodoro" width="96" height="96" /></a><br />
 			<strong><a href="https://chromewebstore.google.com/detail/Timez%20Timer%20%26%20Pomodoro/jpbjkgabibfagbhklibkeblgedgkbgei?utm_source=ext_app_menu">Timez Timer &amp; Pomodoro</a></strong><br />
 			<sub>"Timez Timer & Pomodoro" is a Chrome extension designed to enhance focus and productivity. Set multiple timers within the extension to break down your tasks, manage your time effectively, and achieve your goals. Additionally, you can use the Pomodoro feature to work and have a break in a more planned way</sub><br /><br />
 			<a href="https://chromewebstore.google.com/detail/Timez%20Timer%20%26%20Pomodoro/jpbjkgabibfagbhklibkeblgedgkbgei?utm_source=ext_app_menu"><strong>Open &rarr;</strong></a>
 		</td>
 		<td width="50%">
+			<a href="https://chromewebstore.google.com/detail/syncboard-clipboard-manag/pjkhiifckihkopcgelghofikbhdijcke"><img src="screenshots/Sync128.png" alt="Syncboard Clipboard Manager" width="96" height="96" /></a><br />
 			<strong><a href="https://chromewebstore.google.com/detail/syncboard-clipboard-manag/pjkhiifckihkopcgelghofikbhdijcke">Syncboard Clipboard Manager</a></strong><br />
 			<sub>SyncBoard is a powerful clipboard management extension that seamlessly syncs your clipboard data across all your devices. Effortlessly copy, organize, and access your clipboard history anywhere, boosting your productivity and ensuring you never lose important information.</sub><br /><br />
 			<a href="https://chromewebstore.google.com/detail/syncboard-clipboard-manag/pjkhiifckihkopcgelghofikbhdijcke"><strong>Open &rarr;</strong></a>
